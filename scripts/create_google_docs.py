@@ -6,7 +6,7 @@ from googleapiclient.discovery import build
 FOLDER_ID = "1TCSe7zhDqDca5yme-kNUdL26ZFXLoGFV"
 
 # Path to the JSON key
-CREDENTIALS_FILE = "credentials/aerp-integration-95f342c0a1ea.json"
+CREDENTIALS_FILE = "credentials/prpilot-integration-95f342c0a1ea.json"
 
 SCOPES = ['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/documents']
 
@@ -18,27 +18,27 @@ def create_docs():
 
     docs_data = [
         {
-            "title": "AERP-1: User Auth",
+            "title": "PRPilot-1: User Auth",
             "body": "Users must be able to register and login. The login endpoint should return a JWT token valid for 24 hours. Passwords must be hashed using Django's default PBKDF2 algorithm. MD5 is strictly prohibited."
         },
         {
-            "title": "AERP-2: Razorpay Payments",
+            "title": "PRPilot-2: Razorpay Payments",
             "body": "Integrate Razorpay. Important: Any webhook we receive from Razorpay MUST have its cryptographic signature verified using our secret key before we mark an order as paid. Also, ensure users can only initiate payments for their own orders."
         },
         {
-            "title": "AERP-3: Product Search",
+            "title": "PRPilot-3: Product Search",
             "body": "Build a product search endpoint. Performance is critical—use select_related/prefetch_related to avoid N+1 database queries when fetching products and their categories. The search term must be parameterized to prevent SQL injection."
         },
         {
-            "title": "AERP-4: Inventory",
+            "title": "PRPilot-4: Inventory",
             "body": "When an order is placed, decrement the available quantity. Since we expect high traffic, you MUST use database-level row locking (select_for_update) to prevent race conditions where two users buy the last item at the exact same millisecond."
         },
         {
-            "title": "AERP-5: Order Dashboard",
+            "title": "PRPilot-5: Order Dashboard",
             "body": "Create an order history endpoint for users, and a dashboard for admins. Ensure strict permission scoping so users cannot read other people's orders."
         },
         {
-            "title": "AERP-6: Coupons",
+            "title": "PRPilot-6: Coupons",
             "body": "Create an endpoint to apply discount codes. Business rule: A discount can NEVER make the order total drop below zero (minimum price is $0). Also, wrap the coupon usage count increment in an atomic database transaction."
         }
     ]

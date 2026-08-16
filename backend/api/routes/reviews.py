@@ -173,7 +173,7 @@ async def cancel_review(
 
 @router.get("/health")
 async def health_check():
-    return {"status": "healthy", "service": "aerp-api"}
+    return {"status": "healthy", "service": "prpilot-api"}
 
 
 @router.get("/{review_id}/findings")

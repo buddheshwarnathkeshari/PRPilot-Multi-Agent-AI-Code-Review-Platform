@@ -133,9 +133,9 @@ async def post_pr_comments(pr_url: str, findings: list, github_token: str) -> st
     pr = repo.get_pull(pr_number)
 
     if not findings:
-        body = "## AERP Code Review\n\n✅ Everything looks good! No major issues found."
+        body = "## PRPilot Code Review\n\n✅ Everything looks good! No major issues found."
     else:
-        body = "## AERP Code Review Findings\n\n"
+        body = "## PRPilot Code Review Findings\n\n"
         for finding in findings:
             # We assume findings are instances of CodeFinding Pydantic models
             title = getattr(finding, "title", "Issue")
@@ -189,7 +189,7 @@ async def post_single_finding_comment(
         desc = finding.get("description", "")
         file_path = finding.get("file_path", "General")
 
-        body = "## AERP AI Review Finding\n\n"
+        body = "## PRPilot AI Review Finding\n\n"
         body += f"### [{severity}] {title}\n"
         body += f"**File:** `{file_path}`\n\n"
         body += f"{desc}\n\n"

@@ -13,7 +13,7 @@ settings = get_settings()
 # broker = where tasks are queued (Redis)
 # backend = where task results are stored (also Redis)
 celery_app = Celery(
-    "aerp",
+    "prpilot",
     broker=settings.redis_url,
     backend=settings.redis_url,
     include=["backend.tasks.review_tasks"],  # Auto-discover tasks

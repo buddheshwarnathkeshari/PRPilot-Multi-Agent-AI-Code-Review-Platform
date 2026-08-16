@@ -1,4 +1,4 @@
-# AI Engineering Review Platform (AERP)
+# AI Engineering Review Platform (PRPilot)
 ## Complete Feature & Technology Document
 
 **Version**: 1.0  
@@ -28,12 +28,12 @@
 
 ## 1. Product Vision
 
-AERP is an **autonomous multi-agent engineering review system**.
+PRPilot is an **autonomous multi-agent engineering review system**.
 
 It reviews a software change the way a **team of senior engineers** would — except it does it in minutes, at any time, with consistent depth.
 
 > Traditional code review: One engineer, one perspective, after the code is written.
-> AERP: Eight specialist agents, eight perspectives, simultaneously, the moment the PR is opened.
+> PRPilot: Eight specialist agents, eight perspectives, simultaneously, the moment the PR is opened.
 
 The system answers not just *"Is this code correct?"* but:
 
@@ -51,7 +51,7 @@ And after answering all of that — it writes the review comments directly on yo
 
 ## 2. Core Problem Being Solved
 
-| Problem | Without AERP | With AERP |
+| Problem | Without PRPilot | With PRPilot |
 |---|---|---|
 | Review bottleneck | Wait 1–3 days for reviewer | Review ready in ~5 minutes |
 | Reviewer blind spots | Code reviewer misses security issues | 8 specialists each check their domain |
@@ -724,7 +724,7 @@ def calculate_risk_score(findings: list[Finding]) -> int:
 - Pydantic-native (same models used for HTTP I/O and LLM structured outputs)
 - Fastest Python framework (comparable to Node.js for async workloads)
 
-**Endpoints AERP exposes**:
+**Endpoints PRPilot exposes**:
 ```
 POST /reviews/start          → Submit a new review request
 GET  /reviews/{id}/status    → Check review progress
@@ -768,9 +768,9 @@ GET  /health                 → Docker health check
 ### Primary LLM: Google Gemini 2.0 Flash
 
 **What**: Google's production LLM, optimized for speed and cost.  
-**Why for AERP**:
+**Why for PRPilot**:
 - 1 million token context window (can fit an entire codebase)
-- ~$0.02 per full AERP review (vs $0.90 for Claude Sonnet)
+- ~$0.02 per full PRPilot review (vs $0.90 for Claude Sonnet)
 - Fast response times (lower latency = faster reviews)
 - Excellent code understanding capabilities
 - Free tier via Google AI Studio for development
@@ -798,7 +798,7 @@ Gemini 1.5 Pro (optional, for complex reviews):
 - ACID compliance (critical for audit trail integrity)
 - JSON columns for flexible agent output storage
 
-**Tables in AERP**:
+**Tables in PRPilot**:
 ```sql
 reviews          — Review sessions (id, status, risk_score, created_at)
 agent_findings   — Per-agent raw findings (agent, severity, confidence)
@@ -827,7 +827,7 @@ LIMIT 5;
 
 ### Cache + Message Broker: Redis
 
-**Dual role in AERP**:
+**Dual role in PRPilot**:
 
 **Role 1 — Celery Message Broker**:
 Stores task queue entries. When FastAPI accepts a review request, it puts a Celery task in Redis. A Celery worker picks it up and runs the LangGraph workflow.
@@ -842,7 +842,7 @@ Stores the complete LangGraph state when the workflow pauses for human review. T
 ### Task Queue: Celery
 
 **What**: Distributed task queue for Python.  
-**Why**: A full AERP review takes 5-10 minutes. HTTP requests cannot wait that long (timeout). Celery allows:
+**Why**: A full PRPilot review takes 5-10 minutes. HTTP requests cannot wait that long (timeout). Celery allows:
 - Immediate response: `{ "review_id": "abc123", "status": "queued" }`
 - Background execution: LangGraph workflow runs on a worker
 - Durability: Tasks survive server restarts (stored in Redis)

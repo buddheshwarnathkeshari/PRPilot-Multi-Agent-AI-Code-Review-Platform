@@ -13,7 +13,7 @@ export default function ApprovalInterface({ reviewId, prUrl, review, findings, o
     setLoading(true)
     try {
       await axios.post(`${API_BASE}/reviews/${reviewId}/approve`, {
-        comment: 'Approved by Human via AERP UI'
+        comment: 'Approved by Human via PRPilot UI'
       })
       onApproved()
     } catch (err) {

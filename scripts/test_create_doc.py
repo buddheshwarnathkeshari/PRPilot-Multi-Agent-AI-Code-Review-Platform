@@ -2,10 +2,10 @@ import os
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 
-CREDENTIALS_FILE = "credentials/aerp-integration-95f342c0a1ea.json"
+CREDENTIALS_FILE = "credentials/prpilot-integration-95f342c0a1ea.json"
 SCOPES = ['https://www.googleapis.com/auth/drive']
 
-# The AERP Folder ID that the Service Account now owns
+# The PRPilot Folder ID that the Service Account now owns
 FOLDER_ID = "1TCSe7zhDqDca5yme-kNUdL26ZFXLoGFV"
 
 def test_create_doc():
@@ -16,7 +16,7 @@ def test_create_doc():
     print(f"Attempting to create a new Google Doc inside folder: {FOLDER_ID}")
     
     file_metadata = {
-        'name': 'AERP Auto-Created Test Doc',
+        'name': 'PRPilot Auto-Created Test Doc',
         'mimeType': 'application/vnd.google-apps.document',
         'parents': [FOLDER_ID]
     }

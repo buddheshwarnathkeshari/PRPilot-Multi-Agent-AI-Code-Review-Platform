@@ -129,7 +129,7 @@ def route_after_consensus(state: ReviewState) -> str:
 
 def create_workflow(checkpointer=None):
     """
-    Builds and compiles the AERP LangGraph workflow.
+    Builds and compiles the PRPilot LangGraph workflow.
     """
     builder = StateGraph(ReviewState)
 

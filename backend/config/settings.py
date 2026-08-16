@@ -2,7 +2,7 @@
 backend/config/settings.py
 
 WHAT IS THIS?
-  Central configuration for the entire AERP application.
+  Central configuration for the entire PRPilot application.
   All environment variables are read HERE and ONLY here.
   No other file should call os.getenv() directly.
 
@@ -55,9 +55,9 @@ class Settings(BaseSettings):
 
     # ── Database Settings ─────────────────────────────────────────────────────
     database_url: str
-    postgres_user: str = "aerp"
-    postgres_password: str = "aerp_password"
-    postgres_db: str = "aerp_db"
+    postgres_user: str = "prpilot"
+    postgres_password: str = "prpilot_password"
+    postgres_db: str = "prpilot_db"
     postgres_host: str = "postgres"
     postgres_port: int = 5432
 

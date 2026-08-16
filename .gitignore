@@ -46,3 +46,6 @@ credentials/
 test_embeddings.py
 uploads/
 scratch/
+
+# Local personal notes 
+local_docs/

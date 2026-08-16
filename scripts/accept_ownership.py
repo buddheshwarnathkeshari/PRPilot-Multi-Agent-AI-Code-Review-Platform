@@ -2,10 +2,10 @@ import os
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 
-CREDENTIALS_FILE = "credentials/aerp-integration-95f342c0a1ea.json"
+CREDENTIALS_FILE = "credentials/prpilot-integration-95f342c0a1ea.json"
 SCOPES = ['https://www.googleapis.com/auth/drive']
 
-# USER INSTRUCTIONS: Paste the ID of your "AERP" folder here.
+# USER INSTRUCTIONS: Paste the ID of your "PRPilot" folder here.
 # You can find it in the URL when you open the folder in Drive:
 # https://drive.google.com/drive/folders/<THIS_IS_THE_FOLDER_ID>
 FOLDER_ID = "1TCSe7zhDqDca5yme-kNUdL26ZFXLoGFV"

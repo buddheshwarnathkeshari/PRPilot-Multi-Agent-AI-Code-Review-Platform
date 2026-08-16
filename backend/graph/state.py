@@ -134,7 +134,7 @@ class HumanDecision(TypedDict):
 
 class ReviewState(TypedDict):
     """
-    The complete shared state for the AERP review workflow.
+    The complete shared state for the PRPilot review workflow.
 
     LIFECYCLE:
       1. Created empty when a review starts.

@@ -1,25 +1,45 @@
-# AERP (Autonomous Engineering Review Platform)
+# PRPilot (Multi-Agent AI Code Review Platform)
 
-![AERP Dashboard](docs/assets/StartCodeReview.png)
+![PRPilot Dashboard](docs/assets/StartCodeReview.png)
 <img src="docs/assets/Reviewing.png" width="800" alt="Review Dashboard">
 
 ## 🎥 Live Demo
 
 ![Live Demo](docs/assets/Demo.gif)
 
-<a href="https://github.com/buddheshwarnathkeshari/aerp/releases/download/V0.0.0/AERP-DEMO.mov">
+<a href="https://github.com/buddheshwarnathkeshari/prpilot/releases/download/V0.0.0/PRPilot-DEMO.mov">
   <img src="https://img.shields.io/badge/%F0%9F%93%A5_Download_High--Quality_Demo_(220MB)-2ea44f?style=for-the-badge" alt="Download High Quality Demo" />
 </a>
 
 
 
 ## 🚀 What it does
-AERP is an advanced, AI-powered Autonomous Engineering Review Platform designed to revolutionize the code review process. It acts as a hyper-intelligent, multi-agent code reviewer that automatically analyzes GitHub pull requests against Jira requirements, architectural guidelines, security standards, and performance metrics. 
+PRPilot is an advanced, AI-powered Autonomous Engineering Review Platform designed to revolutionize the code review process. It acts as a hyper-intelligent, multi-agent code reviewer that automatically analyzes GitHub pull requests against Jira requirements, architectural guidelines, security standards, and performance metrics. 
 
-By orchestrating a swarm of specialized AI agents, AERP performs deep, contextual reviews—catching bugs, security vulnerabilities (OWASP), N+1 queries, and architectural anti-patterns before code is ever merged. It provides engineers with a beautifully designed, real-time dashboard to monitor the review process as the agents deliberate, reach a consensus, and generate actionable findings.
+By orchestrating a swarm of specialized AI agents, PRPilot performs deep, contextual reviews—catching bugs, security vulnerabilities (OWASP), N+1 queries, and architectural anti-patterns before code is ever merged. It provides engineers with a beautifully designed, real-time dashboard to monitor the review process as the agents deliberate, reach a consensus, and generate actionable findings.
+
+## ✨ Key Engineering Highlights
+
+This platform is built to demonstrate advanced software engineering patterns, system design, and AI orchestration. Here are the core technical achievements:
+
+* **Stateful Multi-Agent Orchestration (LangGraph)**
+  * Implements complex `StateGraph` state machines and cyclic directed graphs to manage the parallel execution of specialized AI agents (Security, Architecture, Database, Code).
+  * Uses a robust **Consensus Agent** pattern to dynamically resolve conflicting advice between agents and aggregate findings into a single, cohesive code review.
+* **Event-Driven Asynchronous Processing (Celery & Redis)**
+  * Offloads highly demanding, compute-heavy LLM inferences and vector searches to a distributed Celery worker queue, guaranteeing that the primary FastAPI web server remains highly responsive and unblocked under load.
+* **Real-Time Bidirectional Streaming (WebSockets & Redis Pub/Sub)**
+  * Achieves a seamless, real-time user experience by streaming live execution logs and state transitions from background Celery workers directly to the React frontend. This is powered by Redis Pub/Sub channels feeding into asynchronous FastAPI WebSockets.
+* **Retrieval-Augmented Generation (RAG) with `pgvector`**
+  * Seamlessly integrates PostgreSQL's `pgvector` extension for storing and indexing high-dimensional semantic embeddings.
+  * Employs advanced **Cosine Similarity** vector searches to dynamically retrieve and inject contextually relevant architectural guidelines into the LLM context windows on the fly.
+* **Human-in-the-Loop (HITL) Checkpointing**
+  * Demonstrates complex LangGraph state management by employing `interrupt_before` breakpoints. When the Security Agent detects critical OWASP vulnerabilities, execution is paused, state is persisted to a Redis checkpointer, and the system waits for explicit managerial approval via the UI before resuming.
+* **High-Performance Async Backend (FastAPI & asyncpg)**
+  * Built entirely on an asynchronous stack utilizing `asyncpg` and SQLAlchemy 2.0 for highly concurrent, non-blocking database I/O.
+  * Features secure, production-ready JWT-based authentication, password hashing (bcrypt), and OAuth integrations.
 
 ## 🛠️ Technologies Used
-AERP is built on a modern, robust full-stack architecture leveraging state-of-the-art AI orchestration and real-time communication.
+PRPilot is built on a modern, robust full-stack architecture leveraging state-of-the-art AI orchestration and real-time communication.
 
 ### Backend & AI Orchestration
 * **FastAPI**: High-performance asynchronous Python web framework for the core API.
@@ -47,7 +67,7 @@ AERP is built on a modern, robust full-stack architecture leveraging state-of-th
 * **Jira API**: Cross-references code changes with product requirements and acceptance criteria.
 
 ## 🧠 How it works
-The magic of AERP lies in its specialized multi-agent architecture. Here is the flow when a new Pull Request is submitted for review:
+The magic of PRPilot lies in its specialized multi-agent architecture. Here is the flow when a new Pull Request is submitted for review:
 
 1. **Context Collection & RAG Pipeline**: The system automatically fetches the PR diff from GitHub and the associated Jira ticket. It then queries the `pgvector` database using Cosine Similarity to retrieve the most relevant architectural guidelines (Google Docs) and injects them into the agents' context windows.
 2. **The Orchestrator Agent**: A master routing agent analyzes the scope of the PR (e.g., lines changed, files touched). It intelligently determines which specialized agents are required for the review—for example, skipping the Database Agent if no SQL migrations or ORM queries were modified, saving compute and time.

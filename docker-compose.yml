@@ -21,7 +21,7 @@ services:
   # Plain postgres requires manual extension installation steps.
   postgres:
     image: pgvector/pgvector:pg16
-    container_name: aerp_postgres
+    container_name: prpilot_postgres
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
@@ -45,7 +45,7 @@ services:
   # They use different Redis key prefixes so they don't interfere.
   redis:
     image: redis/redis-stack-server:latest
-    container_name: aerp_redis
+    container_name: prpilot_redis
     restart: unless-stopped
     ports:
       - "6379:6379"
@@ -62,7 +62,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: aerp_api
+    container_name: prpilot_api
     restart: unless-stopped
     ports:
       - "8000:8000"
@@ -95,7 +95,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: aerp_worker
+    container_name: prpilot_worker
     restart: unless-stopped
     env_file:
       - .env
@@ -112,7 +112,7 @@ services:
   # ── React Frontend ─────────────────────────────────────────────────────────
   frontend:
     image: node:20-alpine
-    container_name: aerp_frontend
+    container_name: prpilot_frontend
     working_dir: /app
     volumes:
       - ./frontend:/app

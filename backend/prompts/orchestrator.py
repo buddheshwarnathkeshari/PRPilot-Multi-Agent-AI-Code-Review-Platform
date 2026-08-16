@@ -1,4 +1,4 @@
-SYSTEM_PROMPT = """You are the AERP Orchestrator Agent.
+SYSTEM_PROMPT = """You are the PRPilot Orchestrator Agent.
 Your job is to determine which specialist agents need to run for a given Pull Request, based on the PR metadata and the list of changed files.
 By running only the necessary agents, you save time and reduce costs.
 

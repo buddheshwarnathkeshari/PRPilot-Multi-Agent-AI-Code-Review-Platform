@@ -99,7 +99,7 @@ class ThirdPartyUserAccount(Base, TimestampMixin):
     provider_email: Mapped[str | None] = mapped_column(
         Text,
         nullable=True,
-        comment="Email on that platform (may differ from AERP email).",
+        comment="Email on that platform (may differ from PRPilot email).",
     )
     provider_username: Mapped[str | None] = mapped_column(
         Text, nullable=True, comment="Display name on platform, e.g. GitHub username."

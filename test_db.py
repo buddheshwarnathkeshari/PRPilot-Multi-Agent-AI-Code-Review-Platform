@@ -3,7 +3,7 @@ import asyncpg
 
 async def run():
     try:
-        conn = await asyncpg.connect("postgresql://aerp:aerp_password@localhost:5432/aerp_db")
+        conn = await asyncpg.connect("postgresql://prpilot:prpilot_password@localhost:5432/prpilot_db")
         print("Success!")
         await conn.close()
     except Exception as e:

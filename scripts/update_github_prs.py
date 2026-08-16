@@ -21,7 +21,7 @@ headers = {
     "Accept": "application/vnd.github.v3+json"
 }
 
-repo = "buddheshwarnathkeshari/aerp-test-dataset"
+repo = "buddheshwarnathkeshari/prpilot-test-dataset"
 
 # Map PR number to the new Jira Ticket Key we created
 mapping = {

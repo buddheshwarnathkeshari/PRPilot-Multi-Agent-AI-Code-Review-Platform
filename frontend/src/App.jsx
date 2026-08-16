@@ -114,7 +114,7 @@ function App() {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
             <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-              <img src="/logo-full.png" alt="AERP" style={{ height: '32px', objectFit: 'contain' }} />
+              <img src="/logo-full.png" alt="PRPilot" style={{ height: '32px', objectFit: 'contain' }} />
             </Link>
             <HeaderNavigation />
           </div>

@@ -40,7 +40,7 @@ const LoginPage = () => {
         
         <div className="glass-panel w-full flex flex-col relative" style={{ padding: '3rem 2.5rem', gap: '2rem', animation: 'slideUp 0.5s ease-out forwards', zIndex: 1 }}>
           <div className="text-center flex flex-col items-center gap-2">
-            <img src="/logo-full.png" alt="AERP" style={{ height: '56px', objectFit: 'contain', marginBottom: '0.5rem' }} />
+            <img src="/logo-full.png" alt="PRPilot" style={{ height: '56px', objectFit: 'contain', marginBottom: '0.5rem' }} />
             <h2 className="text-2xl font-bold m-0" style={{ background: 'linear-gradient(to right, #fff, #94a3b8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Welcome Back</h2>
             <p className="text-sm m-0" style={{ color: 'var(--text-secondary)' }}>Sign in to access your dashboard</p>
           </div>

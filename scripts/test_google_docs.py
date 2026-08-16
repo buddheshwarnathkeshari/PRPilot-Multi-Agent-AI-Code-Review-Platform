@@ -5,7 +5,7 @@ from googleapiclient.http import MediaIoBaseUpload
 import io
 
 FOLDER_ID = "1TCSe7zhDqDca5yme-kNUdL26ZFXLoGFV"
-CREDENTIALS_FILE = "credentials/aerp-integration-95f342c0a1ea.json"
+CREDENTIALS_FILE = "credentials/prpilot-integration-95f342c0a1ea.json"
 SCOPES = ['https://www.googleapis.com/auth/drive']
 
 def test_drive_upload():
@@ -15,7 +15,7 @@ def test_drive_upload():
 
     print("Attempting to upload a .txt file to the folder...")
     file_metadata = {
-        'name': 'AERP_Test.txt',
+        'name': 'PRPilot_Test.txt',
         'parents': [FOLDER_ID]
     }
     media = MediaIoBaseUpload(io.BytesIO(b"Hello World"), mimetype='text/plain', resumable=True)

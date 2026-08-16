@@ -350,7 +350,7 @@ def upgrade() -> None:
             "provider_email",
             sa.Text(),
             nullable=True,
-            comment="Email on that platform (may differ from AERP email).",
+            comment="Email on that platform (may differ from PRPilot email).",
         ),
         sa.Column(
             "provider_username",

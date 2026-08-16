@@ -12,11 +12,11 @@ payload = {
         "author": "dev1"
     },
     "jira_ticket": {
-        "ticket_id": "AERP-101",
+        "ticket_id": "PRPilot-101",
         "title": "Enable local models",
         "status": "In Progress",
         "priority": "High",
-        "description": "Users need to run AERP without internet access.",
+        "description": "Users need to run PRPilot without internet access.",
         "acceptance_criteria": ["Support local LLM execution", "Provider agnostic architecture"]
     },
     "architecture_doc_url": "https://docs.google.com/document/d/fake/edit",

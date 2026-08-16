@@ -35,7 +35,7 @@ settings = get_settings()
 
 @celery_app.task(
     bind=True,  # `self` = the task instance (for retry/status)
-    name="aerp.run_review",
+    name="prpilot.run_review",
     max_retries=3,  # Retry up to 3 times on failure
     default_retry_delay=30,  # Wait 30 seconds between retries
     soft_time_limit=600,  # Warn at 10 minutes
@@ -50,7 +50,7 @@ def run_review_task(
     user_id: str = None,
 ):
     """
-    Celery task that runs the complete AERP review workflow.
+    Celery task that runs the complete PRPilot review workflow.
     """
     logger.info(
         "Review task started",
@@ -262,7 +262,7 @@ async def _update_review_complete(review_id: str, risk_score: int, recommendatio
 
 
 @celery_app.task(
-    bind=True, name="aerp.generate_artifacts", max_retries=3, soft_time_limit=300
+    bind=True, name="prpilot.generate_artifacts", max_retries=3, soft_time_limit=300
 )
 def generate_artifacts_task(self, review_id: str):
     """
@@ -333,7 +333,7 @@ def generate_artifacts_task(self, review_id: str):
         repo_name = pr_metadata.get("repo_name")
         base_branch = pr_metadata.get("branch", "main")
 
-        doc_branch = f"aerp/docs/{review_id[:8]}"
+        doc_branch = f"prpilot/docs/{review_id[:8]}"
         doc_files = doc_content if isinstance(doc_content, dict) else {}
         if doc_files:
             await create_pull_request(
@@ -341,21 +341,21 @@ def generate_artifacts_task(self, review_id: str):
                 repo_name,
                 doc_branch,
                 base_branch,
-                title="AERP Auto-Generated Documentation Updates",
+                title="PRPilot Auto-Generated Documentation Updates",
                 body="Inline documentation and README updates generated based on approved PR.",
                 files=doc_files,
                 github_token=github_token,
             )
 
         # Create Test PR
-        test_branch = f"aerp/tests/{review_id[:8]}"
-        test_files = {"tests/test_aerp_auto.py": test_content}
+        test_branch = f"prpilot/tests/{review_id[:8]}"
+        test_files = {"tests/test_prpilot_auto.py": test_content}
         await create_pull_request(
             repo_owner,
             repo_name,
             test_branch,
             base_branch,
-            title="AERP Auto-Generated Tests",
+            title="PRPilot Auto-Generated Tests",
             body="Tests generated based on approved review changes.",
             files=test_files,
             github_token=github_token,

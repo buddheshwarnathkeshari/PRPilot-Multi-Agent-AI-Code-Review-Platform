@@ -34,7 +34,7 @@ async def lifespan(app: FastAPI):
     It uses async context managers — cleaner and more Pythonic.
     """
     # ── STARTUP ───────────────────────────────────────────────────────────────
-    logger.info("AERP API starting up", env=settings.app_env)
+    logger.info("PRPilot API starting up", env=settings.app_env)
 
     # Verify database connectivity on startup
     # If this fails, the app fails fast — better than failing on first request
@@ -53,7 +53,7 @@ async def lifespan(app: FastAPI):
     yield  # App runs here
 
     # ── SHUTDOWN ──────────────────────────────────────────────────────────────
-    logger.info("AERP API shutting down")
+    logger.info("PRPilot API shutting down")
 
 
 # ── Create FastAPI app ────────────────────────────────────────────────────────

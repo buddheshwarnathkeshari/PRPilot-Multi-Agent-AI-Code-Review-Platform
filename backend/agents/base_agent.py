@@ -57,7 +57,7 @@ settings = get_settings()
 
 class BaseAgent(ABC):
     """
-    Abstract base class for all AERP specialist agents.
+    Abstract base class for all PRPilot specialist agents.
 
     To create a new agent:
       1. Subclass BaseAgent

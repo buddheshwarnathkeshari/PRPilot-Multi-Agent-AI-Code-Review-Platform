@@ -69,7 +69,7 @@ function FindingCard({ finding, reviewId }) {
   }, [dropdownRef])
 
   const generateDefaultMessage = () => {
-    let msg = `## AERP AI Review Finding\n\n### [${(finding.severity || 'medium').toUpperCase()}] ${finding.title || 'Issue'}\n**File:** \`${finding.file_path || 'General'}\`\n\n${finding.description}\n\n`;
+    let msg = `## PRPilot AI Review Finding\n\n### [${(finding.severity || 'medium').toUpperCase()}] ${finding.title || 'Issue'}\n**File:** \`${finding.file_path || 'General'}\`\n\n${finding.description}\n\n`;
     if (finding.evidence) {
       msg += `**Evidence:**\n\`\`\`\n${finding.evidence}\n\`\`\`\n\n`;
     }

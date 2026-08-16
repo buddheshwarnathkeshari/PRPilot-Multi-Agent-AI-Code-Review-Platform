@@ -1,7 +1,7 @@
 """
 backend/agents/code_review_agent.py
 
-The Code Review Agent — the first complete agent in AERP.
+The Code Review Agent — the first complete agent in PRPilot.
 
 This is the simplest possible concrete agent:
   - Inherits ALL execution logic from BaseAgent (run, tools, LLM setup)
