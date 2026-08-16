@@ -533,7 +533,7 @@ def upgrade() -> None:
         ),
         sa.Column(
             "embedding",
-            pgvector.sqlalchemy.vector.VECTOR(dim=768),
+            pgvector.sqlalchemy.Vector(dim=768),
             nullable=True,
             comment="768-dimensional float vector from Google text-embedding-004. The HNSW index on this column enables fast similarity search. NULL only transiently, while embedding is being computed.",
         ),

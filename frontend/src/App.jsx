@@ -35,9 +35,9 @@ const ProfileDropdown = () => {
 
   return (
     <div className="relative" ref={dropdownRef}>
-      <button 
+      <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center justify-center cursor-pointer transition hover-brighten profile-dropdown-btn ${user?.first_name ? 'profile-dropdown-btn-with-name' : 'profile-dropdown-btn-icon-only'}`} 
+        className={`flex items-center justify-center cursor-pointer transition hover-brighten profile-dropdown-btn ${user?.first_name ? 'profile-dropdown-btn-with-name' : 'profile-dropdown-btn-icon-only'}`}
       >
         {user?.first_name && (
           <span className="profile-dropdown-name">
@@ -48,14 +48,14 @@ const ProfileDropdown = () => {
           <User size={user?.first_name ? 16 : 20} />
         </div>
       </button>
-      
+
       {isOpen && (
         <div className="animate-slide-up profile-dropdown-menu">
           <div className="profile-dropdown-header">
             <div className="profile-dropdown-header-name">{user?.first_name} {user?.last_name}</div>
             <div className="profile-dropdown-header-email">{user?.email}</div>
           </div>
-          
+
           <Link to="/profile" onClick={() => setIsOpen(false)} className="dropdown-item flex items-center">
             <Settings size={16} /> Update Profile
           </Link>
@@ -79,7 +79,7 @@ const HeaderNavigation = () => {
   const { user } = useAuth();
   const location = useLocation();
   const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
-  
+
   if (isAuthPage) return null;
 
   return (
@@ -100,7 +100,7 @@ function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <header style={{ 
+        <header style={{
           width: '100%',
           padding: '1rem 2rem',
           position: 'sticky',
@@ -114,7 +114,7 @@ function App() {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
             <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-              <img src="/logo-full.png" alt="PRPilot" style={{ height: '32px', objectFit: 'contain' }} />
+              <img src="/PRPilot-logo.jpg" alt="PRPilot" style={{ height: '32px', objectFit: 'contain' }} />
             </Link>
             <HeaderNavigation />
           </div>
@@ -124,7 +124,7 @@ function App() {
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            
+
             {/* Protected Routes */}
             <Route path="/" element={<ProtectedRoute><SubmitReview /></ProtectedRoute>} />
             <Route path="/review/:id" element={<ProtectedRoute><ReviewDashboard /></ProtectedRoute>} />

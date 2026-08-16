@@ -1,0 +1,58 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# .dockerignore
+# Tells Docker which files/dirs to EXCLUDE from the build context.
+# This speeds up builds and prevents host artifacts from polluting the image.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Host virtual environment — has macOS-specific symlinks; breaks inside Linux container
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.coverage.*
+*.egg-info/
+dist/
+build/
+
+# Git
+.git/
+.gitignore
+
+# Environment secrets (env vars are injected via docker-compose env_file)
+.env
+.env.local
+.env.*.local
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Docs / local dev notes (not needed in image)
+docs/
+local_docs/
+scratch/
+README.md
+
+# Logs
+*.log
+
+# Credentials (mounted as volume at runtime)
+credentials/
+
+# Frontend (handled by its own container)
+frontend/
+
+# Test files
+tests/
+test_*.py
